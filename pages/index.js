@@ -1,16 +1,24 @@
 import Container from '../components/container'
 import Head from 'next/head'
-const Index = () => {
+import fetch from 'isomorphic-fetch'
+import Users from '../components/users'
+const Index = (props) => {
+  console.log(props)
   return (
-    <div>
-      <Head>
+    <Container>
+    <Head>
       <title>Next.js Project - Home</title>
     </Head>
-    <Container>
-      <h1>Index</h1>
+      <h1>NEXT</h1>
+      <Users users={props.users}/>
     </Container>
-    </div>
   );
 };
+
+Index.getInitialProps = async (ctx) => {
+ const res = await fetch('https://reqres.in/api/users')
+ const resJSON = await res.json()
+ return {users: resJSON.data}
+}
 
 export default Index;

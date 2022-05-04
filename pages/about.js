@@ -1,10 +1,10 @@
-import Navigation from '../components/navigation'
+import Container from '../components/container'
 const About = () => {
     return (
-        <div>
-            <Navigation/>
+        <Container>
             <h1>About</h1>
-        </div>
+            <p>Este es otro comentario</p>
+        </Container>
     )
 }
 
